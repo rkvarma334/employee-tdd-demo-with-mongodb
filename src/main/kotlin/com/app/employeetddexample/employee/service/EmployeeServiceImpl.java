@@ -18,24 +18,29 @@ public class EmployeeServiceImpl implements IEmployeeService {
     private EmployeeRepo employeeRepo;
 
 
+    @Override
+    public Either<Exception,String> createEmployee(EmployeeState employeeState) {
+
+       List<Employee> oldEmpList =   this.getAllEmps();
+        EmployeeList oldEmployeeList = new EmployeeList(oldEmpList);
+     Either either=   oldEmployeeList.createEmp(employeeState);
+        if (either.isRight()){
+            employeeRepo.save(employeeState);
+            return Either.right(employeeState.getEmpId());
+        }
+        return Either.left(new Exception("emp registered already"));
+    }
 
     @Override
-    public String createEmployee(EmployeeState employeeState) {
+    public List<Employee> getAllEmps() {
 
-     List<Employee> oldEmpList =   this.getAllEmps().stream().map(x->new Employee(employeeState)).collect(Collectors.toList());
+       List<EmployeeState> employeeStateList= employeeRepo.findAll();
 
-        EmployeeList employeeList = new EmployeeList(oldEmpList);
-        Either empEither =employeeList.createEmp(employeeState);
+      List<Employee> employeeList = employeeStateList.stream().map(x->new Employee(x)).collect(Collectors.toList());
 
-        if(empEither.isRight()){
-
-        }
-
-
-
-
-        return "";
+        return employeeList;
     }
+
 
     @Override
     public Employee getEmpById(String empId) {
@@ -44,11 +49,5 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return emp;
     }
 
-    @Override
-    public List<EmployeeState> getAllEmps() {
 
-      List<EmployeeState>employeeStateList=  employeeRepo.findAll();
-
-        return employeeStateList;
-    }
 }

@@ -2,12 +2,16 @@ package com.app.employeetddexample.employee.service;
 
 import com.app.employeetddexample.employee.model.Employee;
 import com.app.employeetddexample.employee.model.EmployeeState;
+import io.vavr.control.Either;
 
 import java.util.List;
 
+
 public interface IEmployeeService {
 
-    String createEmployee(EmployeeState employeeState);
+    Either<Exception, String> createEmployee(EmployeeState employeeState);
+    List<Employee> getAllEmps();
+
     Employee getEmpById(String empId);
-    List<EmployeeState> getAllEmps();
+
 }

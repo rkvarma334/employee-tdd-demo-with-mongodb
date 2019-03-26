@@ -5,8 +5,6 @@ import io.vavr.control.Either;
 
 public interface IEmployeeList {
 
+    Either<Exception,Boolean> createEmp(EmployeeState employeeState);
 
-    Boolean createEmployee( EmployeeState employeeState);
-
-    Either<Exception,EmployeeState> createEmp(EmployeeState employeeState);
 }

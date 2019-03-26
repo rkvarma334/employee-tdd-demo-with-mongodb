@@ -23,7 +23,6 @@ public class EmployeeState {
     public void setEmpName(String empName) {
         this.empName = empName;
     }
-
     public String getMobileNum() {
         return mobileNum;
     }
@@ -36,7 +35,6 @@ public class EmployeeState {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-
     public LocalDateTime getEmpCreatedDate() {
         return empCreatedDate;
     }

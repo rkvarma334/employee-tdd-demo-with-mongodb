@@ -15,26 +15,14 @@ public class EmployeeList implements IEmployeeList {
             }
 
     @Override
-    public Boolean createEmployee( EmployeeState employeeState) {
-
-        Optional<Employee> employee =  this.employeeList.stream().
-                filter(x->x.getEmployeeState().getMobileNum().equals(employeeState.getMobileNum()) ||
-                        x.getEmployeeState().getEmailId().equals(employeeState.getEmailId())).findAny();
-
-        return !employee.isPresent();
+    public Either<Exception, Boolean> createEmp(EmployeeState employeeState) {
+        Optional<Employee> empOptional = this.employeeList.stream().
+                filter(x->x.getEmployeeState().getEmpId().equals(employeeState.getEmpId()) ||
+               x.getEmployeeState().getMobileNum().equals(employeeState.getMobileNum())).findAny();
+        if (!empOptional.isPresent()){
+           return Either.right(true);
+        }
+        return Either.left(new Exception("Emp already registered"));
     }
 
-    @Override
-    public Either<Exception,EmployeeState> createEmp(EmployeeState employeeState) {
-
-     Optional<Employee> employeeOptional =  this.employeeList.stream().filter(x->x.getEmployeeState().getEmpId().equals(employeeState.getEmpId()) ||
-                                      x.getEmployeeState().getMobileNum().equals(employeeState.getMobileNum())).findAny();
-
-     if (!employeeOptional.isPresent()){
-
-         String id =employeeOptional.get().createEmployee(employeeState);
-     }
-
-     return Either.left(new Exception("Employee already exit in db"));
-    }
 }
