@@ -1,6 +1,7 @@
 package com.app.employeetddexample;
 
 import com.app.employeetddexample.employee.model.EmployeeState;
+import com.app.employeetddexample.employee.model.ForgotPassword;
 import com.app.employeetddexample.employee.service.IEmployeeService;
 import io.vavr.control.Either;
 import org.junit.Assert;
@@ -24,18 +25,29 @@ public class EmployeeTestIT {
 
        EmployeeState employeeState = new EmployeeState();
        employeeState.setEmpId("423456789");
-       employeeState.setMobileNum("4000125172");
+       employeeState.setUsername("Dasharath1234");
+       employeeState.setPassword("password");
        employeeState.setEmpName("Dasharath");
+       employeeState.setMobileNum("4000125172");
+       employeeState.setDob(LocalDateTime.now());
        employeeState.setEmailId("dasharath@gmail.com");
        employeeState.setEmpCreatedDate(LocalDateTime.now());
-
        Either either =  iEmployeeService.createEmployee(employeeState);
 
        System.out.println(either);
            Assert.assertTrue(either.isRight());
           // Assert.assertTrue(either.isRight());
 
+
        }
 
+
+       @Test
+    public void updatepassword(){
+
+           ForgotPassword forgotPassword = new ForgotPassword();
+           forgotPassword.setUserNameOrMobileNumber("");
+
+       }
 
 }

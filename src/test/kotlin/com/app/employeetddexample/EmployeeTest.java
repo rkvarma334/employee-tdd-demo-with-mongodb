@@ -1,9 +1,6 @@
 package com.app.employeetddexample;
 
-import com.app.employeetddexample.employee.model.Employee;
-import com.app.employeetddexample.employee.model.EmployeeList;
-import com.app.employeetddexample.employee.model.EmployeeState;
-import com.app.employeetddexample.employee.model.IEmployeeList;
+import com.app.employeetddexample.employee.model.*;
 import com.app.employeetddexample.employee.service.IEmployeeService;
 import io.vavr.control.Either;
 import org.junit.Assert;
@@ -33,6 +30,8 @@ public class EmployeeTest {
     EmployeeState employeeState = new EmployeeState();
     Employee employee = new Employee(employeeState);
     employeeState.setEmpId("123456");
+    employeeState.setUsername("KumaraVarma123");
+    employeeState.setPassword("kumar");
     employeeState.setMobileNum("9000125172");
     employeeState.setEmailId("kumaravarma@gmail.com");
     employeeState.setEmpName("kumaravarma");
@@ -40,6 +39,7 @@ public class EmployeeTest {
     EmployeeState employeeState1 = new EmployeeState();
     Employee employee1 = new Employee(employeeState1);
     employeeState1.setEmpId("1234567");
+    employeeState1.setUsername("Ramesh143");
     employeeState1.setEmpName("ramesh");
     employeeState1.setMobileNum("9876543210");
     employeeState1.setEmailId("ramesh1@gmail.com");
@@ -57,9 +57,11 @@ public class EmployeeTest {
     public void createEmployeeTestFail(){
     EmployeeState employeeState = new EmployeeState();
     employeeState.setEmpId("123456");
-    employeeState.setMobileNum("9000125172");
+    employeeState.setUsername("Ramesh143");
+    employeeState.setMobileNum("9876543210");
+    employeeState.setEmailId("ramesh1@gmail.com");
 
-   Either either =  iEmployeeService.createEmployee(employeeState);
+      Either either =  iEmployeeList.createEmp(employeeState);
 
     Assert.assertTrue(either.isLeft());
 
@@ -109,6 +111,8 @@ public class EmployeeTest {
         Assert.assertTrue(either.isRight());
 
     }
+
+
 
 
 }
