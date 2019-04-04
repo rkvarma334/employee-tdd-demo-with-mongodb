@@ -6,16 +6,12 @@ import io.vavr.control.Either;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+
 public class EmployeeTest {
 
     private IEmployeeList iEmployeeList;
@@ -73,7 +69,7 @@ public class EmployeeTest {
         employeeState.setEmpId("12345678");
         employeeState.setMobileNum("8000125172");
 
-        Either either =  iEmployeeService.createEmployee(employeeState);
+        Either either =  iEmployeeList.createEmp(employeeState);
 
         Assert.assertTrue(either.isRight());
 
@@ -87,9 +83,9 @@ public class EmployeeTest {
     newEmployeeState.setMobileNum("9000125172");
     newEmployeeState.setEmailId("ramesh@gmail.com");
 
-   Either either = iEmployeeList.createEmp(newEmployeeState);
+    Either either = iEmployeeList.createEmp(newEmployeeState);
 
-        Assert.assertTrue(either.isRight());
+        Assert.assertTrue(either.isLeft());
 
       /*
       Assert.assertNull(b);

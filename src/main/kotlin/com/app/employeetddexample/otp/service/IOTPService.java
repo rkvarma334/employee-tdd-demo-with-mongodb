@@ -11,4 +11,5 @@ public interface IOTPService {
     String saveOtp(OtpState otpState);
 
     List<OtpModel> getAllOtps();
+
 }

@@ -1,7 +1,5 @@
 package com.app.employeetddexample.otp.service;
 
-import com.app.employeetddexample.otp.model.OTPType;
-import com.app.employeetddexample.otp.model.OtpGenerator;
 import com.app.employeetddexample.otp.model.OtpModel;
 import com.app.employeetddexample.otp.model.OtpState;
 import com.app.employeetddexample.otp.repository.OTPRepository;
@@ -29,6 +27,8 @@ public class OTPServiceImpl implements IOTPService {
         return  otpRepository.findAll().stream().
                 map(x->new OtpModel()).collect(Collectors.toList());
     }
+
+
 
 
 }

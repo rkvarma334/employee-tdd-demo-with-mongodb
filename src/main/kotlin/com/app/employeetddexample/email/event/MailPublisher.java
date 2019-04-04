@@ -1,3 +1,4 @@
+/*
 package com.app.employeetddexample.email.event;
 
 import com.app.employeetddexample.email.model.EmailData;
@@ -17,3 +18,4 @@ public class MailPublisher {
 
     }
 }
+*/

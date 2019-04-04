@@ -11,15 +11,11 @@ public class OtpState {
     private LocalDateTime validateTime;
     private OtpStatus otpStatus;
     private OTPType otpType;
-    private String mobileNumber;
+    private String emailId;
 
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
 
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
+    public String getEmailId() { return emailId; }
+    public void setEmailId(String emailId) { this.emailId = emailId; }
 
     public OTPType getOtpType() {
         return otpType;

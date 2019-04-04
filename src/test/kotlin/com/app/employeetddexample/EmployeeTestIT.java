@@ -25,12 +25,12 @@ public class EmployeeTestIT {
 
        EmployeeState employeeState = new EmployeeState();
        employeeState.setEmpId("423456789");
-       employeeState.setUsername("Dasharath1234");
+       employeeState.setUsername("Raj223");
        employeeState.setPassword("password");
-       employeeState.setEmpName("Dasharath");
-       employeeState.setMobileNum("4000125172");
+       employeeState.setEmpName("RajMahendra");
+       employeeState.setMobileNum("9700125172");
        employeeState.setDob(LocalDateTime.now());
-       employeeState.setEmailId("dasharath@gmail.com");
+       employeeState.setEmailId("raj@gmail.com");
        employeeState.setEmpCreatedDate(LocalDateTime.now());
        Either either =  iEmployeeService.createEmployee(employeeState);
 
@@ -46,8 +46,11 @@ public class EmployeeTestIT {
     public void updatepassword(){
 
            ForgotPassword forgotPassword = new ForgotPassword();
-           forgotPassword.setUserNameOrMobileNumber("");
-
+           forgotPassword.setUserNameOrMobileNumber("9700125172");
+           forgotPassword.setOldPassword("password");
+           forgotPassword.setNewPassword("password123");
+           Either either =  iEmployeeService.updateForgotPassword(forgotPassword);
+           Assert.assertTrue(either.isRight());
        }
 
 }

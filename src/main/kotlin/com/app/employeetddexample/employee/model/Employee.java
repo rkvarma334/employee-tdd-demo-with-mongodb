@@ -7,6 +7,7 @@ public class Employee {
         this.employeeState=employeeState;
     }
 
+
     public EmployeeState getEmployeeState() {
         return employeeState;
     }
@@ -17,7 +18,7 @@ public class Employee {
 
 
 
-    public String createEmployee(EmployeeState employeeState){
+    public EmployeeState createEmployee(EmployeeState employeeState){
 
         this.employeeState.setEmpId(employeeState.getEmpId());
         this.employeeState.setEmpName(employeeState.getEmpName());
@@ -26,9 +27,10 @@ public class Employee {
         this.employeeState.setUsername(employeeState.getUsername());
         this.employeeState.setPassword(employeeState.getPassword());
         this.employeeState.setDob(employeeState.getDob());
-        return this.employeeState.getEmpId();
+        return this.employeeState;
     }
 
 
-    }
+
+}
 

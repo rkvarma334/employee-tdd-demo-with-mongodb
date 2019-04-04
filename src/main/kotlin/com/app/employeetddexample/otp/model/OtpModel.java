@@ -3,6 +3,8 @@ package com.app.employeetddexample.otp.model;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
+
 public class OtpModel {
 
 
@@ -17,16 +19,18 @@ public class OtpModel {
         this.otpState = otpState;
     }
 
-    public OtpState generateOTP( String empMobileNum){
+    public OtpState generateOTP( String emailId){
         OtpState otpState = new OtpState();
         OtpGenerator otpGenerator = new OtpGenerator();
-        otpState.setMobileNumber(empMobileNum);
+        otpState.setEmailId(emailId);
         otpState.setOtpId(UUID.randomUUID().toString());
         otpState.setOtp(otpGenerator.generateRandomString());
         otpState.setCreateTime(LocalDateTime.now());
         otpState.setValidateTime(LocalDateTime.now().plusMinutes(15));
         otpState.setOtpStatus(OtpStatus.ACTIVE);
+        otpState.setOtpType(OTPType.FORGOT_PASSWORD);
         return otpState;
     }
+
 
 }

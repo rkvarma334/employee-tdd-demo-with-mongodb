@@ -1,3 +1,4 @@
+/*
 package com.app.employeetddexample.employee.event;
 
 import org.springframework.cloud.stream.annotation.Input;
@@ -13,3 +14,4 @@ public interface EmployeeInputStream {
     String INPUT="employee-mail-in";
 
 }
+*/
