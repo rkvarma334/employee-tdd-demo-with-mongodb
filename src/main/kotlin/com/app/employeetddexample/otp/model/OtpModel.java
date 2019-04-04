@@ -7,9 +7,7 @@ import java.util.UUID;
 
 public class OtpModel {
 
-
     private OtpState otpState;
-
 
     public OtpState getOtpState() {
         return otpState;
@@ -28,7 +26,6 @@ public class OtpModel {
         otpState.setCreateTime(LocalDateTime.now());
         otpState.setValidateTime(LocalDateTime.now().plusMinutes(15));
         otpState.setOtpStatus(OtpStatus.ACTIVE);
-        otpState.setOtpType(OTPType.FORGOT_PASSWORD);
         return otpState;
     }
 

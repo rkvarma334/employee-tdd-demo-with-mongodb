@@ -8,8 +8,6 @@ public interface EmployeeRepo extends MongoRepository<EmployeeState, String> {
 
      Employee findByEmpId(String empId);
 
-   EmployeeState findByMobileNumOrUsername(String MobileNumOrUserName);
-
-
+   EmployeeState findByEmailId(String emailId);
 
 }

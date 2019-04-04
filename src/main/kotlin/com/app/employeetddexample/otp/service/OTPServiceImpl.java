@@ -23,9 +23,8 @@ public class OTPServiceImpl implements IOTPService {
     }
 
     @Override
-    public List<OtpModel> getAllOtps() {
-        return  otpRepository.findAll().stream().
-                map(x->new OtpModel()).collect(Collectors.toList());
+    public List<OtpState> getAllOtps() {
+        return  otpRepository.findAll();
     }
 
 

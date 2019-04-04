@@ -2,6 +2,7 @@ package com.app.employeetddexample;
 
 import com.app.employeetddexample.employee.model.EmployeeState;
 import com.app.employeetddexample.employee.model.ForgotPassword;
+import com.app.employeetddexample.employee.model.VerifyOTP;
 import com.app.employeetddexample.employee.service.IEmployeeService;
 import io.vavr.control.Either;
 import org.junit.Assert;
@@ -46,10 +47,22 @@ public class EmployeeTestIT {
     public void updatepassword(){
 
            ForgotPassword forgotPassword = new ForgotPassword();
-           forgotPassword.setUserNameOrMobileNumber("9700125172");
-           forgotPassword.setOldPassword("password");
+           forgotPassword.setEmailId("raj@gmail.com");
+           forgotPassword.setOtp("password");
            forgotPassword.setNewPassword("password123");
-           Either either =  iEmployeeService.updateForgotPassword(forgotPassword);
+           Either either =  iEmployeeService.forgotPassword(forgotPassword);
+           Assert.assertTrue(either.isRight());
+       }
+
+       @Test
+    public void verifyOtpTest()
+       {
+           VerifyOTP verifyOTP = new VerifyOTP();
+           verifyOTP.setEmailId("raj@gmail.com");
+           verifyOTP.setOtp("400815");
+           verifyOTP.setNewPassword("password12345");
+
+           Either either = iEmployeeService.verifyOTP(verifyOTP);
            Assert.assertTrue(either.isRight());
        }
 
